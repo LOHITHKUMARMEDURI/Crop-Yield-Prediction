@@ -2,7 +2,7 @@
 .streamlit/secrets.toml
 
 # Ignore ML model file
-Model/crop_yield_model.pkl
+
 
 # Python cache
 __pycache__/

@@ -54,7 +54,7 @@ print("Testing data shape:", X_test.shape)
 from sklearn.ensemble import RandomForestRegressor
 
 model = RandomForestRegressor(
-    n_estimators=100,
+    n_estimators=20,
     random_state=42
 )
 
