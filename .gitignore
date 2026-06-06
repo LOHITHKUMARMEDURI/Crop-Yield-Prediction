@@ -1,9 +1,6 @@
 # Streamlit
 .streamlit/secrets.toml
 
-# Ignore ML model file
-
-
 # Python cache
 __pycache__/
 *.pyc
