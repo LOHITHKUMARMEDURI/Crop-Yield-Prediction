@@ -1,6 +1,7 @@
 import streamlit as st
 import pickle
 import pandas as pd
+import os
 
 st.set_page_config(
     page_title="Crop Yield Prediction",
@@ -17,7 +18,14 @@ page = st.sidebar.radio(
 )
 
 # Load saved model
-with open("../Model/crop_yield_model.pkl", "rb") as file:
+model_path = os.path.join(
+    os.path.dirname(__file__),
+    "..",
+    "Model",
+    "crop_yield_model.pkl"
+)
+
+with open(model_path, "rb") as file:
     model = pickle.load(file)
 
 # ==========================
@@ -70,11 +78,9 @@ if page == "Crop Yield Predictor":
         crop_list
     )
 
-    # Convert selections to encoded values
     area = area_list.index(selected_area)
     item = crop_list.index(selected_crop)
 
-    # Other inputs
     year = st.number_input(
         "Year",
         min_value=1900,
@@ -97,7 +103,6 @@ if page == "Crop Yield Predictor":
         value=25.0
     )
 
-    # Prediction button
     if st.button("🌾 Predict Yield"):
 
         input_data = pd.DataFrame({
@@ -135,18 +140,6 @@ if page == "Crop Yield Predictor":
     Built using Python, Scikit-Learn and Streamlit.
     """)
 
-    st.markdown("---")
-
-    st.markdown(
-        """
-        <center>
-        Developed by Lohith Kumar 🚀<br>
-        Crop Yield Prediction System using Machine Learning
-        </center>
-        """,
-        unsafe_allow_html=True
-    )
-
 # ==========================
 # Project Info Page
 # ==========================
@@ -168,15 +161,3 @@ elif page == "Project Info":
 
     Developed as an Agriculture AI Project.
     """)
-
-    st.markdown("---")
-
-    st.markdown(
-        """
-        <center>
-        Developed by Lohith Kumar 🚀<br>
-        Crop Yield Prediction System using Machine Learning
-        </center>
-        """,
-        unsafe_allow_html=True
-    )
